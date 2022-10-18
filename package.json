@@ -1,7 +1,9 @@
 {
   "name": "dodong",
   "homepage": "https://github.com/nizewn/Dodong#readme",
-  "bugs": "https://github.com/nizewn/Dodong/issues",
+  "bugs": {
+    "url": "https://github.com/nizewn/Dodong/issues"
+  },
   "license": "MIT",
   "description": "A music bot written using discord.js and discord-player",
   "version": "1.0.0",
@@ -17,10 +19,15 @@
     "@discord-player/extractor": "^3.0.2",
     "@discordjs/opus": "^0.8.0",
     "@discordjs/rest": "^1.2.0",
+    "discord-api-types": "^0.37.14",
     "discord-player": "^5.3.2",
     "discord.js": "^14.5.0",
     "ffmpeg-static": "^5.1.0",
-    "play-dl": "^1.9.5"
+    "node-fetch": "^2.6.7",
+    "play-dl": "^1.9.5",
+    "socket.io": "^4.5.3",
+    "spotify-url-info": "^3.1.9",
+    "youtube-sr": "^4.3.4"
   },
   "scripts": {
     "start": "node index.js",
@@ -31,6 +38,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nizewn/Dodong.git"
+    "url": "git+https://github.com/nizewn/Dodong.git"
+  },
+  "devDependencies": {
+    "node": "^16.18.0"
   }
 }

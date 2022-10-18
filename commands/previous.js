@@ -3,7 +3,7 @@ const Command = require("../structures/command.js");
 module.exports = new Command({
 	name: "previous",
 	aliases: ['back', 'prev'],
-	description: "Plays the previous track",
+	description: "I'll bring things back a bit for us.",
 	permission: "SEND_MESSAGES",
 	async run(message, args, client, slash) {
         const queue = client.player.getQueue(message.guild);

@@ -5,7 +5,7 @@ const { prefix } = require("../config.js");
 
 module.exports = new Command({
   name: "filter",
-  description: "View and set audio filters",
+  description: "You can play with how the music sounds through this.",
   permission: "SEND_MESSAGES",
   options: [
     { description: 'Name of the audio filter', name: 'name', type: 3 }
@@ -14,13 +14,13 @@ module.exports = new Command({
   async run (message, args, client, slash) {
 
     if(!message.member.voice.channelId)
-        return message.reply({ embeds: [{ description: `You are not in a voice channel!`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false });
+        return message.reply({ embeds: [{ description: `I'm not in a call with you!`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false });
     if(message.guild.members.me.voice.channelId && message.member.voice.channelId !== message.guild.members.me.voice.channelId)
-        return message.reply({ embeds: [{ description: `You are not in my voice channel!`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false });
+        return message.reply({ embeds: [{ description: `Wrong room, come over here!`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false });
     const queue = client.player.getQueue(message.guild);
     const embed = new EmbedBuilder();
     if(!queue || !queue.playing)
-        return message.reply({embeds: [{ description: `Nothing is currently playing in this server.`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false });
+        return message.reply({embeds: [{ description: `Nothing is on right now, want to change that?`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false });
     if(!args || !args.length) {
         return display_status(queue, embed, message);
     }

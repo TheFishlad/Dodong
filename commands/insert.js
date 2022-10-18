@@ -3,16 +3,16 @@ const Command = require("../structures/command.js");
 module.exports = new Command({
 	name: "insert",
     aliases: ['i', 'pn', 'playnext'],
-	description: "Inserts the song specified to the next position in the queue",
+	description: "I'll move whichever song you like to be played next.",
 	permission: "SEND_MESSAGES",
     options: [
         { description: 'URL or song name', name: 'song', required: true, type: 3 }
     ],
 	async run(message, args, client, slash) {
         if(!message.member.voice.channelId)
-            return message.reply({ embeds: [{ description: `You are not in a voice channel!`, color: 0xb84e44 }], ephemeral: true });
+            return message.reply({ embeds: [{ description: `We've got to settle down somewhere first!`, color: 0xb84e44 }], ephemeral: true });
         if(message.guild.members.me.voice.channelId && message.member.voice.channelId !== message.guild.members.me.voice.channelId)
-            return message.reply({ embeds: [{ description: `You are not in my voice channel!`, color: 0xb84e44 }], ephemeral: true });
+            return message.reply({ embeds: [{ description: `You are not in my voice channel! Don't be afraid to swim on by!`, color: 0xb84e44 }], ephemeral: true });
 		
 		const queue = client.player.getQueue(message.guild);
 		if(!queue || !args[0]) return;

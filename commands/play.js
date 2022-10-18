@@ -3,16 +3,16 @@ const Command = require("../structures/command.js");
 module.exports = new Command({
 	name: "play",
     aliases: ['p'],
-	description: "Plays the song specified",
+	description: "I'll play whatever song you show me!",
 	permission: "SEND_MESSAGES",
     options: [
         { description: 'URL or song name', name: 'song', required: true, type: 3 }
     ],
 	async run(message, args, client, slash) {
         if(!message.member.voice.channelId)
-            return message.reply({ embeds: [{ description: `You are not in a voice channel!`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false });
+            return message.reply({ embeds: [{ description: `Come on and join a call! We've got to be somewhere to listen to this!`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false });
         if(message.guild.members.me.voice.channelId && message.member.voice.channelId !== message.guild.members.me.voice.channelId)
-            return message.reply({ embeds: [{ description: `You are not in my voice channel!`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false });
+            return message.reply({ embeds: [{ description: `I'm a little occupied elsewhere, want to join us?`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false });
         if(!args[0]) return;
         
         if(!message.guild.members.me.permissionsIn(message.member.voice.channel).has(client.requiredVoicePermissions)) return;
@@ -21,7 +21,7 @@ module.exports = new Command({
         let query = args.join(" "), reply = {};
         const searchResult = await client.player.search(query, { requestedBy: slash ? message.user : message.author, searchEngine: "dodong" })
         if (!searchResult || !searchResult.tracks.length) {
-            reply = { embeds: [{ description: `No results found!`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false };
+            reply = { embeds: [{ description: `I couldn't find that!`, color: 0xb84e44 }], ephemeral: true, failIfNotExists: false };
             slash ? message.editReply(reply) : message.reply(reply);
             return;
         }
@@ -43,7 +43,7 @@ module.exports = new Command({
             }
         } catch {
             client.player.deleteQueue(message.guild);
-            reply = { embeds: [{ description: `Could not join your voice channel!`, color: 0xb84e44 }], failIfNotExists: false };
+            reply = { embeds: [{ description: `I couldn't get in! I'll wait for you.`, color: 0xb84e44 }], failIfNotExists: false };
             slash ? message.editReply(reply) : message.reply(reply);
             return;
         }

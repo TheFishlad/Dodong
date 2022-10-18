@@ -5,7 +5,7 @@ const maxVolume = 100;
 module.exports = new Command({
     name: "volume",
     aliases: ["vol"],
-    description: "Adjusts the bot volume",
+    description: "How loud do you want me to be?",
     permission: "SEND_MESSAGES",
     options: [
         { description: 'Volume level from 1 to 100', name: 'level', type: 4 }

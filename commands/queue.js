@@ -5,7 +5,7 @@ const generatePages = require('../utils/embedPages.js');
 module.exports = new Command({
 	name: "queue",
     aliases: ['q'],
-	description: "Displays the server queue",
+	description: "I'll read you off the list of our music we have!",
 	permission: "SEND_MESSAGES",
 	async run(message, args, client, slash, _fromButton = false) {
         const queue = client.player.getQueue(message.guild);

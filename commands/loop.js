@@ -4,7 +4,7 @@ const { EmbedBuilder } = require('discord.js');
 module.exports = new Command({
 	name: "loop",
     aliases: ['repeat'],
-	description: "Loops the server queue",
+	description: "Keeps the current queue on repeat, we must really like these jams.",
 	permission: "SEND_MESSAGES",
     options: [
         { description: 'Loop mode to set', name: 'mode', type: 3 }
@@ -15,11 +15,11 @@ module.exports = new Command({
         if(args.length === 0) {
             if(await queue.repeatMode === QueueRepeatMode.OFF || await queue.repeatMode === QueueRepeatMode.AUTOPLAY) {
                 queue.setRepeatMode(QueueRepeatMode.QUEUE);
-                return message.reply({ embeds: [{ description: `🔄 | Looping the **queue**.`, color: 0x44b868}] });
+                return message.reply({ embeds: [{ description: `🔄 | Keeping the **queue** going!`, color: 0x44b868}] });
             }
             else if(await queue.repeatMode === QueueRepeatMode.QUEUE) {
                 queue.setRepeatMode(QueueRepeatMode.TRACK);
-                return message.reply({ embeds: [{ description: `🔂 | Looping the **current track**.`, color: 0x44b868}] });
+                return message.reply({ embeds: [{ description: `🔂 | Let's stick to **current track** for a while.`, color: 0x44b868}] });
             }
             else if(await queue.repeatMode === QueueRepeatMode.TRACK) {
                 queue.setRepeatMode(QueueRepeatMode.OFF);
@@ -32,7 +32,7 @@ module.exports = new Command({
         }
         else if(args.includes("track") || args.includes("song") || args.includes("current")) {
             queue.setRepeatMode(QueueRepeatMode.TRACK);
-            slash ? message.reply({embeds: [{ description: `🔂 Looping the current track.`, color: 0x44b868 }]}) : message.react("🔂");
+            slash ? message.reply({embeds: [{ description: `🔂 Let's stick to the current song.`, color: 0x44b868 }]}) : message.react("🔂");
         }
         else if(args.includes("queue") || args.includes("all")) {
             queue.setRepeatMode(QueueRepeatMode.QUEUE);
@@ -40,7 +40,7 @@ module.exports = new Command({
         }
         else if(args.includes("autoplay")){
             queue.setRepeatMode(QueueRepeatMode.AUTOPLAY);
-            slash ? message.reply({embeds: [{ description: `▶️ Autoplay has been enabled.`, color: 0x44b868}] }) : message.react("▶️");
+            slash ? message.reply({embeds: [{ description: `▶️ Our music will flow with the tide now.`, color: 0x44b868}] }) : message.react("▶️");
         }
         else {
             const embed = new EmbedBuilder()

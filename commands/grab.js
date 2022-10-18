@@ -3,15 +3,15 @@ const Command = require("../structures/command.js");
 module.exports = new Command({
 	name: "grab",
     aliases: ['g'],
-	description: "Sends a private message to you with information about the current playing song",
+	description: "I'll pass along a secret note!",
 	permission: "SEND_MESSAGES",
 	async run(message, args, client, slash) {
         const queue = client.player.getQueue(message.guild);
         if (!queue || !queue.playing) {
-            return message.reply({ embeds: [{ description: `There's nothing currently playing in the server.`, color: 0xb84e44 }], ephemeral: true });
+            return message.reply({ embeds: [{ description: `Aww, nothings on right now... Want to change that?`, color: 0xb84e44 }], ephemeral: true });
         }
 		if (slash)
-			message.reply({ embeds: [{ description: `Sent a private message!`, color: 0x44b868 }], ephemeral: true });
+			message.reply({ embeds: [{ description: `I gave you a private message, take a peek!`, color: 0x44b868 }], ephemeral: true });
 		else
 			message.react('📩');
 	

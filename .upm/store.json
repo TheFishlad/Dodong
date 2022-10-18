@@ -1,0 +1,1 @@
+{"version":2,"languages":{"nodejs-npm":{"specfileHash":"357ca015708c40ceeb1dbfec879d0ba4","lockfileHash":"4eb4cf1714df1819d2b2806f5b7a2699","guessedImports":["discord.js","discord-player","@discordjs/rest","play-dl","socket.io","node-fetch","discord-api-types","@discord-player/extractor","spotify-url-info","youtube-sr"],"guessedImportsHash":"92224c6e85ab945690ea92ec630c8173"}}}

@@ -4,7 +4,7 @@ const generatePages = require('../utils/embedPages.js');
 module.exports = new Command({
 	name: "help",
 	aliases: [],
-	description: "Displays all server commands",
+	description: "I'll let you know what I can and can't do...",
 	permission: "SEND_MESSAGES",
 	async run(message, args, client, slash) {
 		const pages = [];

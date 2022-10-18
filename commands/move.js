@@ -3,7 +3,7 @@ const Command = require("../structures/command.js");
 module.exports = new Command({
 	name: "move",
     aliases: ['m'],
-	description: "Moves a song to a different position in the queue",
+	description: "I can swap our music around!",
 	permission: "SEND_MESSAGES",
     options: [
         { description: 'Position of the track to move', name: 'oldposition', required: true, type: 4 },
